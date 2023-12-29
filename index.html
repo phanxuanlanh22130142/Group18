@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang Web Giải Trí</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <style>
   * {
       margin: 0;
@@ -29,7 +30,13 @@
       font-size: 14px;
       width: 100px;
       cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
     }
+    .login-button:hover,
+.register-button:hover {
+  background-color: #555;
+  color: white;
+}
 
     .button-container {
       display: flex;
@@ -65,7 +72,8 @@
       outline: none;
       cursor: pointer;
       padding: 10px 20px;
-      transition: 0.3s;
+      
+      transition: background-color 0.3s;
     }
 
     .tab button:hover {
@@ -77,10 +85,12 @@
       padding: 20px;
       border: 1px solid #ccc;
       border-top: none;
+      transition: opacity 0.5s;
     }
 
     .tabcontent.active {
       display: block;
+      opacity: 1;
     }
     .container .button {
     display: inline-block;
@@ -95,10 +105,12 @@
 
         .container .button:hover {
             background-color: #777;
+            color: red;
         }
         .container {
     color: blue; 
     font-family: "Arial", sans-serif; 
+    transition: color 0.3s;
 }
 
 
@@ -119,6 +131,10 @@
     max-width: 800px; 
     margin-left: auto;
     margin-right: auto;
+    transition: background-color 0.3s;
+}
+.box:hover {
+  background-color: #ddd; /* Màu sẽ thay đổi khi di chuột qua box */
 }
 
 .box img {
@@ -245,6 +261,72 @@
   display: flex;
   justify-content: center;
 }
+#notification {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: opacity 0.5s;
+}
+
+#notification.success {
+    background-color: #4CAF50;
+    color: white;
+    opacity: 1;
+}
+
+#notification.error {
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+}
+@keyframes rotateIn {
+  from {
+    transform: rotate(-180deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
+.animated-text {
+  animation: rotateIn 1s ease-out;
+}
+#contactForm {
+        display: none;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #contactForm label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    #contactForm button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #contactForm button:hover {
+        background-color: #45a049;
+    }
   </style>
 </head>
 <body>
@@ -256,10 +338,10 @@
     <div class="button-container">
       <button onclick="window.location.href = 'about.html';">About</button>
       <button onclick="window.location.href = 'group_diary.html';">Group Diary</button>
+      <button onclick="openNestedTab(event, 'design')">Design</button>
     </div>
-    
   </div>
-  
+  <button onclick="guidedAction()">Guided Action</button>
   <div class="login-container" id="loginContainer" style="display: none;">
     <h2>Đăng nhập</h2>
     <input type="text" id="username" placeholder="Tên đăng nhập">
@@ -273,17 +355,25 @@
     <input type="password" id="newPassword" placeholder="Mật khẩu mới">
     <button onclick="register()">Đăng ký</button>
   </div>
-  
+  <div id="notification" style="display: none;"></div>
   <div class="container">
     <div class="welcome-message">
       <h1>Chào mừng đến với Web Giải trí</h1>
     </div>
-    <p>
-        Đây là một trang web đơn giản được xây dựng bởi các bạn nhóm 18 đầy nhiệt huyết</br>
-        Trang web này được tạo ra với mục đích tạo một thế giới vui chơi giải trí sau  
-                                      giờ học 
+    <p class="animated-text">
+      Đây là một trang web đơn giản được xây dựng bởi các bạn nhóm 18 đầy nhiệt huyết</br>
+      Trang web này được tạo ra với mục đích tạo một thế giới vui chơi giải trí sau giờ học
     </p>
-    
+    <div class="center-content">
+      <div id="design" class="tabcontent">
+        <h3>Truyện</h3>
+        <div class="box">
+          <img src="image/truyen.jpg" alt="truyen">
+          
+        </div>
+        <p>"Hãy đồng hành cùng nhân vật chính và khám phá cuộc phiêu lưu tuyệt vời trong truyện này!" </p>
+
+      </div>
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'menu')">Menu</button>
         
@@ -339,59 +429,157 @@
       
               </div>
             </div>
-
+            <button onclick="showContactForm()">Liên hệ chúng tôi</button>
+            <div id="contactForm" style="display: none;">
+              <h3>Liên hệ chúng tôi</h3>
+              <form id="form" onsubmit="submitForm(event)">
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="message">Nội dung:</label>
+                <textarea id="message" name="message" required></textarea>
+        
+                <button type="submit">Gửi</button>
+            </form>
+          </div>
           
-  <script>
-      function openLogin() {
-      document.getElementById("loginContainer").style.display = "block";
-      document.getElementById("registerContainer").style.display = "none";
+            <script  >
+              function openLogin() {
+                document.getElementById("loginContainer").style.display = "block";
+                document.getElementById("registerContainer").style.display = "none";
+              }
+          
+              function openRegister() {
+                document.getElementById("registerContainer").style.display = "block";
+                document.getElementById("loginContainer").style.display = "none";
+              }
+          
+              document.addEventListener("DOMContentLoaded", function() {
+                var registerContainer = document.getElementById("registerContainer");
+                var loginContainer = document.getElementById("loginContainer");
+          
+                if (registerContainer && loginContainer) {
+                  registerContainer.style.display = "none";
+                  loginContainer.style.display = "block";
+                  openTab(null, 'menu'); // Hiển thị nội dung mặc định (tab Menu)
+                } else {
+                  console.error("Không tìm thấy phần tử với ID registerContainer hoặc loginContainer.");
+                }
+              });
+              var loggedIn = false;
+
+function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Giả định kiểm tra thông tin đăng nhập
+    if (username === "admin" && password === "admin") {
+        loggedIn = true;
+    } else {
+        loggedIn = false;
     }
 
-    function openRegister() {
-      document.getElementById("registerContainer").style.display = "block";
-      document.getElementById("loginContainer").style.display = "none";
+    // Hiển thị thông báo dựa trên kết quả kiểm tra
+    if (loggedIn) {
+        displayNotification("Đăng nhập thành công!", "success");
+    } else {
+        displayNotification("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.", "error");
     }
-
-    function openAbout() {
-      alert("Thông tin về trang web sẽ được hiển thị ở đây.");
-    }
-
-    function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  document.getElementById(tabName).style.display = "block";
 }
 
-function openNestedTab(evt, nestedTabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  document.getElementById(nestedTabName).style.display = "block";
+function register() {
+    var newUsername = document.getElementById("newUsername").value;
+    var newPassword = document.getElementById("newPassword").value;
+
+    // Giả định kiểm tra thông tin đăng ký
+    if (newUsername !== "admin") {
+        // Tên đăng nhập mới không được trùng với "admin"
+        loggedIn = true;
+    } else {
+        loggedIn = false;
+    }
+
+    // Hiển thị thông báo dựa trên kết quả kiểm tra
+    if (loggedIn) {
+        displayNotification("Đăng ký thành công!", "success");
+    } else {
+        displayNotification("Đăng ký thất bại. Vui lòng thử lại hoặc chọn tên đăng nhập khác.", "error");
+    }
 }
 
+function displayNotification(message, type) {
+    var notification = document.getElementById("notification");
+    
+    // Đặt nội dung và lớp cho thông báo
+    notification.innerHTML = message;
+    notification.className = type;
 
-    function login() {
-var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-      /* Kiểm tra thông tin đăng nhập và thực hiện hành động liên quan */
-    }
-
-    function register() {
-      var newUsername = document.getElementById("newUsername").value;
-      var newPassword = document.getElementById("newPassword").value;
-      /* Xử lý thông tin đăng ký và lưu trữ */
-    }
-    function redirectToGroup_Diary(){
-      window.location.href = "group_diary.html"
-    }
-    function redirectToAbout() {
+    // Hiển thị thông báo và ẩn sau vài giây
+    notification.style.display = "block";
+    setTimeout(function() {
+        notification.style.display = "none";
+    }, 3000); // 3000 milliseconds = 3 seconds, bạn có thể điều chỉnh thời gian hiển thị thông báo
+}
+          
+              function openTab(evt, tabName) {
+                var tabElement = document.getElementById(tabName);
+                if (tabElement) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tabElement.style.display = "block";
+                } else {
+                  console.error("Không tìm thấy phần tử với ID " + tabName);
+                }
+              }
+          
+              function openNestedTab(evt, nestedTabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+                }
+                document.getElementById(nestedTabName).style.display = "block";
+              }
+          
+              
+          
+              function redirectToGroup_Diary() {
+                window.location.href = "group_diary.html";
+              }
+          
+              function redirectToAbout() {
                 window.location.href = "about.html";
-            }
-  </script>
+              }
+              function guidedAction() {
+    Swal.fire({
+        title: 'Guided Action',
+        html: '<p>Chào mừng bạn đến với tính năng Guided Action! Dưới đây là một số hướng dẫn chi tiết:</p>' +
+              '<ul>' +
+              '<li>Nhấn "Đăng nhập" để trải nghiệm chức năng đăng nhập.</li>' +
+              '<li>Nhấn "Đăng ký" để tạo một tài khoản mới.</li>' +
+              '<li>Khám phá các danh mục như "Phim", "Truyện", "Nhạc", "Game" ở menu.</li>' +
+              '</ul>',
+        icon: 'info',
+        confirmButtonText: 'OK'
+    });
+}
+
+function showContactForm() {
+        document.getElementById("contactForm").style.display = "block";
+    }
+
+    function submitForm(event) {
+        // Xử lý logic gửi form ở đây
+        event.preventDefault();
+        alert("Form đã được gửi!");
+    }
+            </script>
+             
 </body>
 </html>

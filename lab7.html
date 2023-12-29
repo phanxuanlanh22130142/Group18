@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập và Đăng ký</title>
+  <style>
+    /* Thêm CSS cho trang web của bạn tại đây */
+  </style>
+</head>
+<body>
+  <div id="loginForm">
+    <h2>Đăng nhập</h2>
+    <form>
+      <input type="text" placeholder="Tên đăng nhập" id="username">
+      <input type="password" placeholder="Mật khẩu" id="password">
+      <button type="submit">Đăng nhập</button>
+    </form>
+  </div>
+  <div id="signupForm">
+    <h2>Đăng ký</h2>
+    <form>
+      <input type="text" placeholder="Tên đăng nhập" id="newUsername">
+      <input type="password" placeholder="Mật khẩu" id="newPassword">
+      <input type="password" placeholder="Xác nhận mật khẩu" id="confirmPassword">
+      <button type="submit">Đăng ký</button>
+    </form>
+  </div>
+
+  <script>
+   document.querySelector('#loginForm form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    console.log('Đang thử đăng nhập với:', username, password);
+
+    // Thực hiện kiểm tra tên đăng nhập và mật khẩu ở đây
+    if (username === 'username' && password === 'password') {
+      alert('Đăng nhập thành công!');
+      // Chuyển người dùng đến trang đã đăng nhập
+      window.location.href = 'index.html';
+    } else {
+      alert('Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng thử lại.');
+    }
+  });
+
+  document.querySelector('#signupForm form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var newUsername = document.getElementById('newUsername').value;
+    var newPassword = document.getElementById('newPassword').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+
+    console.log('Đang thử đăng ký với:', newUsername, newPassword, confirmPassword);
+
+    // Thực hiện kiểm tra và xử lý việc đăng ký ở đây
+    if (newPassword === confirmPassword) {
+      alert('Đăng ký thành công!');
+      // Thực hiện các bước đăng ký thành công ở đây
+    } else {
+      alert('Xác nhận mật khẩu không khớp. Vui lòng thử lại.');
+    }
+  });
+  </script>
+</body>
+</html>

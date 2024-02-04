@@ -689,43 +689,164 @@ button {
   color: greenyellow;
   transform: scale(1.05);
 }
+.auth-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .auth-buttons button {
+            padding: 10px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-button {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .register-button {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .auth-form {
+            display: none;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #loginForm {
+            background-color: #3498db;
+            color: white;
+        }
+
+        #registerForm {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .auth-message {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success-message {
+            color: green;
+        }
+
+        .error-message {
+            color: white;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+input, select, textarea, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
   </style>
 </head>
 <body>
   <div class="taskManager">
-    <div class="login-register-container"> 
-      <button onclick="openTab1('login')">Đăng nhập</button>
-      <button onclick="openTab1('register')">Đăng ký</button>
-    </div>
-  
-    <div id="login-content" class="tab-content">
-      <div id="loginTab" class="tab">
-        <div class="login-container">
-          <h2>Đăng nhập</h2>
-          <input type="text" id="username" placeholder="Tên đăng nhập">
-          <input type="password" id="password" placeholder="Mật khẩu">
-          <button onclick="login()">Đăng nhập</button>
-        </div>
-      </div>
-      <div id="notification" style="display: none;"></div>
-    </div>
-  
-    <div id="register-content" class="tab-content">
-      <div id="registerTab" class="tab">
-        <div class="register-container">
-          <h2>Đăng ký</h2>
-          <input type="text" id="newUsername" placeholder="Tên đăng nhập mới">
-          <input type="password" id="newPassword" placeholder="Mật khẩu mới">
-          <button onclick="register()">Đăng ký</button>
-        </div>
-      </div>
-      <div id="notification" style="display: none;"></div>
-    </div>
+    <div class="auth-buttons">
+      <button class="login-button" onclick="showForm('loginForm')">Đăng nhập</button>
+      <button class="register-button" onclick="showForm('registerForm')">Đăng ký</button>
+  </div>
 
+  <div id="loginForm" class="auth-form">
+      <h3>Đăng nhập</h3>
+      
+      <label for="loginUsername">Tên đăng nhập:</label>
+      <input type="text" id="loginUsername" name="loginUsername" required>
+
+      <label for="loginPassword">Mật khẩu:</label>
+      <input type="password" id="loginPassword" name="loginPassword" required>
+
+     
+      <button type="submit" onclick="login()">Đăng nhập</button>
+
+     
+      <div id="loginMessage" class="auth-message"></div>
+  </div>
+
+  <div id="registerForm" class="auth-form">
+      <h3>Đăng ký</h3>
+      
+      <label for="registerUsername">Tên đăng nhập:</label>
+      <input type="text" id="registerUsername" name="registerUsername" required>
+
+      <label for="registerEmail">Email:</label>
+      <input type="email" id="registerEmail" name="registerEmail" required>
+
+      <label for="registerPassword">Mật khẩu:</label>
+      <input type="password" id="registerPassword" name="registerPassword" required>
+
+      
+      <button type="submit" onclick="register()">Đăng ký</button>
+
+     
+      <div id="registerMessage" class="auth-message"></div>
+  </div>
 
     <div class="button-container" id="button-container"> 
       <button onclick="window.location.href = 'about.html';">About</button>
-      <button onclick="window.location.href = 'group_diary.html';">Group Diary</button>
+      <button onclick="window.location.href = 'groupDiary.html';">Group Diary</button>
+      <button onclick="window.location.href = 'home.html';">Home</button>
+      <button onclick="window.location.href = 'movie.html';">Movie</button>
+      <button onclick="window.location.href = 'technical.html';">Technical</button>
+      <button onclick="window.location.href = 'result.html';">Result</button>
       <button onclick="openNestedTab(event, 'design')">Design</button>
     </div>
   </div>
@@ -872,66 +993,51 @@ button {
           </div>
           
             <script  >
-           function openTab1(tabName) {
-      var i, tabContent;
-      tabContent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none";
-      }
+         function showForm(formId) {
+         
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.style.display = 'none';
+            });
 
-      document.getElementById(tabName + "-content").style.display = "block";
-    }
+            
+            document.querySelectorAll('.auth-message').forEach(message => {
+                message.textContent = '';
+            });
 
-function login() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+            document.getElementById(formId).style.display = 'block';
+        }
 
-    if (username === "admin" && password === "admin") {
-        loggedIn = true;
-    } else {
-        loggedIn = false;
-    }
+        function login() {
+          
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
 
-    
-    if (loggedIn) {
-        displayNotification("Đăng nhập thành công!", "success");
-    } else {
-        displayNotification("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.", "error");
-    }
-}
+            
+            if (username === 'user' && password === 'password') {
+                document.getElementById('loginMessage').textContent = 'Đăng nhập thành công.';
+                document.getElementById('loginMessage').classList.add('success-message');
+            } else {
+                document.getElementById('loginMessage').textContent = 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.';
+                document.getElementById('loginMessage').classList.add('error-message');
+            }
+        }
 
-function register() {
-    var newUsername = document.getElementById("newUsername").value;
-    var newPassword = document.getElementById("newPassword").value;
-
-    
-    if (newUsername !== "admin") {
-        
-        loggedIn = true;
-    } else {
-        loggedIn = false;
-    }
-
-    
-    if (loggedIn) {
-        displayNotification("Đăng ký thành công!", "success");
-    } else {
-        displayNotification("Đăng ký thất bại. Vui lòng thử lại hoặc chọn tên đăng nhập khác.", "error");
-    }
-}
-
-function displayNotification(message, type) {
-    var notification = document.getElementById("notification");
-    
-  
-    notification.innerHTML = message;
-    notification.className = type;
-
+        function register() {
    
-    notification.style.display = "block";
-    setTimeout(function() {
-        notification.style.display = "none";
-    }, 3000); 
+    const username = document.getElementById('registerUsername').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+
+    
+    if (username && email && password) {
+        document.getElementById('registerMessage').textContent = 'Đăng ký thành công.';
+        document.getElementById('registerMessage').classList.add('success-message');
+        document.getElementById('registerMessage').classList.remove('error-message');
+    } else {
+        document.getElementById('registerMessage').textContent = 'Đăng ký thất bại. Vui lòng điền đầy đủ thông tin.';
+        document.getElementById('registerMessage').classList.add('error-message');
+        document.getElementById('registerMessage').classList.remove('success-message');
+    }
 }
 document.addEventListener("DOMContentLoaded", function () {
   let images = document.querySelectorAll("#phim .box img");
@@ -975,7 +1081,7 @@ document.addEventListener("DOMContentLoaded", function () {
               
           
               function redirectToGroup_Diary() {
-                window.location.href = "group_diary.html";
+                window.location.href = "groupDiary.html";
               }
           
               function redirectToAbout() {

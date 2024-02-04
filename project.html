@@ -19,10 +19,10 @@
         .branding {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Canh giữa theo chiều ngang */
+    align-items: center; 
     width: 100%;
     padding: 0px;
-    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi chiều rộng */
+    box-sizing: border-box; 
     margin-bottom: 30px;
 }
 
@@ -33,13 +33,13 @@
 }
 
 .branding h1 {
-    margin: 0; /* Loại bỏ margin mặc định của h1 */
+    margin: 0;
     color: #fff;
     font-size: 24px;
-    flex: 1; /* Dùng flex để dòng chữ "My Tabbed Website" chiếm phần còn lại của không gian */
+    flex: 1; 
 }
 
-/* Thêm style mới cho header */
+
 header {
     background-color: #3498db;
     color: #fff;
@@ -47,8 +47,8 @@ header {
     text-align: center;
     border-radius: 5px 5px 0 0;
     width: 100%;
-    position: fixed; /* Change this from relative to fixed */
-    top: 0; /* Add this line to set it at the top */
+    position: fixed; 
+    top: 0; 
     margin-top: 0px;
     height: 95px;
 }
@@ -143,8 +143,8 @@ header {
             border-radius: 0 0 5px 5px;
             width: 100%;
             margin-top: 0px;
-            position: fixed; /* Change this from relative to fixed */
-    bottom: 0; /* Add this line to set it at the top */
+            position: fixed; 
+    bottom: 0; 
         }
 
         img {
@@ -184,7 +184,7 @@ header {
             }
         }
         #designTab img {
-    /* Kích thước cho ảnh trong tab thiết kế */
+    
     width: 300px;
     height: 400px;
     border-radius: 5px;
@@ -257,13 +257,13 @@ header {
             <p>Những thiết kế mình tập hợp được của các bạn</p>
     
             <div class="design-item">
-                <img src="image/trangchu.jpg" width="300px" height="400px" alt="Thiết kế Trang chủ">
-                <a href="image/trangchu.jpg" onclick="downloadDesign('image/trangchu.jpg')">Tải Thiết kế Trang chủ</a>
+                <img src="image/trangchu.jpg" width="300px" height="400px" alt="Thiết kế Trang chủ website ">
+                <a href="image/trangchu.jpg" onclick="downloadDesign('image/trangchu.jpg')">Tải Thiết kế Trang chủ website giải trí</a>
             </div>
     
             <div class="design-item">
                 <img src="image/pro.jpg" width="200px" height="300px" alt="Thiết kế Dự án">
-                <a href="image/pro.jpg" onclick="downloadDesign('image/pro.jpg')">Tải Thiết kế Dự án</a>
+                <a href="image/pro.jpg" onclick="downloadDesign('image/pro.jpg')">Tải Thiết Project</a>
             </div>
     
             <div class="design-item">
@@ -272,13 +272,16 @@ header {
             </div>
             <div class="design-item">
                 <img src="image/tnc.jpg" width="250px" height="350px" alt="Thiết kế Technical">
-                <a href="image/tnc.jpg" onclick="downloadDesign('image/tnc.jpg')">Tải Thiết kế GroupDiary</a>
+                <a href="image/tnc.jpg" onclick="downloadDesign('image/tnc.jpg')">Tải Thiết kế Technical</a>
             </div>
             <div class="design-item">
                 <img src="image/ab.jpg" width="250px" height="350px" alt="Thiết kế About">
-                <a href="image/ab.jpg" onclick="downloadDesign('image/ab.jpg')">Tải Thiết kế GroupDiary</a>
+                <a href="image/ab.jpg" onclick="downloadDesign('image/ab.jpg')">Tải Thiết kế About</a>
             </div>
-    
+            <div class="design-item">
+                <img src="image/res.jpg" width="250px" height="350px" alt="Thiết kế ResuLt">
+                <a href="image/res.jpg" onclick="downloadDesign('image/res.jpg')">Tải Thiết kế Result</a>
+            </div>
             <a href="#" onclick="downloadAllDesigns()">Download All Designs</a>
         </div>
     </div>
@@ -292,7 +295,7 @@ header {
             <button onclick="openLink('technical.html')">Technical</button>
             <button onclick="openLink('StyleGuide.html')">Style Guide</button>
             <button onclick="openLink('groupDiary.html')">GroupDiary</button>
-            <button onclick="openLink('trangchu.html')">Trang chủ Website giải trí</button>
+            <button onclick="openLink('index.html')">Trang chủ Website giải trí</button>
             <button onclick="openLink('project.html')">Project</button>
             <button onclick="openLink('result.html')">Result</button>
 
@@ -305,37 +308,37 @@ header {
     <button id="scrollToTopBtn">Cuộn lên trên</button>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Ẩn mặc định tất cả các tab-content trừ tab đầu tiên
+          
             document.querySelectorAll('.tab-content:not(#requirementTab)').forEach(function (tabContent) {
                 tabContent.style.display = 'none';
             });
         });
 
         function changeTab(tabName) {
-            // Ẩn tất cả các tab-content
+           
             document.querySelectorAll('.tab-content').forEach(function (tabContent) {
                 tabContent.classList.remove('active');
                 tabContent.style.display = 'none';
             });
 
-            // Hiển thị tab-content tương ứng
+            
             var activeTabContent = document.getElementById(tabName + 'Tab');
             activeTabContent.classList.add('active');
             activeTabContent.style.display = 'block';
         }
 
         function downloadDesign(filename) {
-            // Simulate download functionality
+           
             alert('Downloading ' + filename);
         }
 
         function downloadAllDesigns() {
-            // Simulate download all designs functionality
+           
             alert('Downloading All Designs');
         }
 
         function openLink(link) {
-            // Open the link in a new window or tab
+            
             window.open(link, '_blank');
         }
         var scrollToTopBtn = document.getElementById("scrollToTopBtn");

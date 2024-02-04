@@ -37,7 +37,7 @@
 
         img {
             width: 100%;
-            border-radius: 50%; /* Để làm tròn ảnh */
+            border-radius: 50%; 
             margin-bottom: 10px;
         }
 
@@ -70,50 +70,50 @@
             <img src="image/lanh.jpg" alt="Thành Viên 1">
             <h3>Nhóm trưởng</h3>
             <h2>Phan Xuân Lãnh </h2>
-            <h3>Công việc</h3>
-            <h2>Trang chủ web giải trí</h2>
-            <h2>GroupDiary</h2>
-            <h2>Project</h2>
-            <h2>Result</h2>
-            <button onclick="showResult(1)">Xem Kết Quả</button>
+            <h3>Công việc(Hoàn thành) </h3>
+            <button onclick="window.location.href = 'index.html';">Trang chủ web giải trí</button>
+            <button onclick="window.location.href = 'groupDiary.html';">GroupDiary</button>
+            <button onclick="window.location.href = 'project.html';">Project</button>
+            <button onclick="window.location.href = 'result.html';">Result</button>
+            <button onclick="window.location.href = 'result2.html';"> Tới Result</button>
         </div>
 
         <div class="column">
             <img src="image/phuoc.jpg" alt="Thành Viên 2">
             <h3>Thành viên 1</h3>
             <h2>Nguyễn Thành Phước</h2>
-            <h3>Công việc</h3>
-            <h2>About</h2>
-            <h2>Home</h2>
-            <button onclick="showResult(2)">Xem Kết Quả</button>
+            <h3>Công việc (Hoàn thành)</h3>
+            <button onclick="window.location.href = 'about.html';">About</button>
+            <button onclick="window.location.href = 'home.html';">Home</button>
+            <button onclick="window.location.href = 'result3.html';"> Tới Result</button>
         </div>
 
         <div class="column">
             <img src="image/tai.jpg" alt="Thành Viên 3">
             <h3>Thành viên 2</h3>
             <h2>Võ Tấn Tài</h2>
-            <h3>Công việc</h3>
-            <h2>Movie</h2>
-            <h2>Style Guide</h2>
+            <h3>Công việc(Hoàn thành) </h3>
+            <button onclick="window.location.href = 'movie.html';">Movie</button>
+            <button onclick="window.location.href = 'StyleGuide.html';">StyleGuide</button>
 
-            <button onclick="showResult(3)">Xem Kết Quả</button>
+            <button onclick="window.location.href = '.html';"> tới Result</button>
         </div>
 
         <div class="column">
             <img src="image/dung.jpg" alt="Thành Viên 4">
             <h3>Thành Viên 3</h3>
             <h2>Bùi Thị Mỹ Dung</h2>
-            <h3>Công việc</h3>
-            <h2>Movie</h2>
-            <h2>Technical</h2>
+            <h3>Công việc(Hoàn thành) </h3>
+            <button onclick="window.location.href = 'movie.html';">Movie</button>
+            <button onclick="window.location.href = 'technical.html';">Technical</button>
             
-            <button onclick="showResult(4)">Xem Kết Quả</button>
+            <button onclick="window.location.href = 'result1.html';"> tới Result</button>
         </div>
     </main>
 
     <script>
         function showResult(memberNumber) {
-            // Thực hiện hành động khi nút được nhấp, ví dụ: mở popup kết quả
+            
             alert('Xem kết quả của Thành Viên ' + memberNumber);
         }
     </script>

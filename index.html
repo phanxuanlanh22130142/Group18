@@ -161,21 +161,18 @@
 
 .box:hover {
   background-color: #ddd;
-  transform: scale(1.05);
+  
 }
 
 .box img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   border-radius: 5px;
-  transition: filter 0.5s ease, transform 0.3s;
+  
 }
 
-.box:hover img {
-  filter: brightness(1.8);
-  transform: scale(1.1);
-}
+
 
 .box.active img {
   opacity: 1;
@@ -866,12 +863,72 @@ input, select, textarea, button {
       <div id="design" class="tabcontent">
         <h3>Design</h3>
         <div class="box">
-          <img src="image/a1.jpg" alt="anh1">
-          <img src="image/a2.jpg" alt="anh2">
+          
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_trangchu_Webgiaitri.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_trangchu_Webgiaitri.jpg')">Download</button>
+            
+          </div>
+
+
+          <div class="image-container">
+            <img src="image/tc_fm.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/tc_fm.jpg')">Download</button>
+            <a href="https://www.figma.com/file/E6ORFw3WntTxf0boXuEfkb/Trang-ch%E1%BB%A7-Web-Gi%E1%BA%A3i-tr%C3%AD?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+          </div>
+          
+         
+
+
+
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_GroupDiary.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_GroupDiary.jpg')">Download</button>
+            
+          </div>
+
+         
+
+          <div class="image-container">
+            <img src="image/gd_fm.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/gd_fm.jpg')">Download</button>
+            <a href="https://www.figma.com/file/Y4MCbTDok372HYIK3qrGuy/Group-Diary?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+          </div>
+          
+        
+
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_Project.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_Project.jpg')">Download</button>
+            
+          </div>
+
+
+        
+          <div class="image-container">
+            <img src="image/project_fm.png" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/project_fm.png')">Download</button>
+            <a href="https://www.figma.com/file/NxOsnh9mLy5DBRdA8siyvj/Project?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+          </div>
+
+
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_Result.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_Result.jpg')">Download</button>
+            
+          </div>
+          
+          <div class="image-container">
+            <img src="image/result_fm.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/result_fm.jpg')">Download</button>
+            <a href="https://www.figma.com/file/lTOCRSm9deTBtR65qRWmB8/Result?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+            
+          </div>
+        
 
           
         </div>
-        <a href="https://www.figma.com/file/UWxDiYBrtJmBpOXROnXpT4/Untitled?type=design&node-id=0%3A1&mode=design&t=nyGDG62pHGVICGVW-1" class="figma-button">Go to Figma</a>
+       
 
       </div>
     <div class="tab">
@@ -924,7 +981,7 @@ input, select, textarea, button {
                 <a href="https://truyenfull.vn/tam-sinh-tam-the-cham-thuong-thu/" target="_blank">
                   <img class="image" src="image/ebook-tam-sinh-tam-the-cham-thuong-t.jpg" alt="Phim 3">
                 </a>
-                <a href="https://www.youtube.com/watch?v=y3CKZjSPhH8" target="_blank">
+                <a href="https://truyenfull.vn/pham-nhan-tu-tien/" target="_blank">
                   <img class="image" src="image/2game-truyen-pham-nhan-tu-tien-vng-anh-7.jpg" alt="Phim 4">
                 </a>
               </div>
@@ -1041,22 +1098,42 @@ input, select, textarea, button {
         document.getElementById('registerMessage').classList.remove('success-message');
     }
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   let images = document.querySelectorAll("#phim .box img");
   let index = 0;
+  function downloadImage(imageUrl) {
+    var link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'downloaded_image.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }})
 
-  function showImage() {
-    images.forEach((img) => {
-      img.style.opacity = 0;
-    });
+  document.addEventListener("DOMContentLoaded", function () {
+    let images = document.querySelectorAll("#phim .box img");
+    let index = 0;
 
-    images[index].style.opacity = 1;
+    function showImage() {
+      if (images.length > 0) {
+        if (images[index]) {
+          images.forEach((img) => {
+            img.style.opacity = 0;
+          });
 
-    index = (index + 1) % images.length;
-  }
+          images[index].style.opacity = 1;
 
-  setInterval(showImage, 3000); 
-});
+          index = (index + 1) % images.length;
+        } else {
+          console.error('Phần tử không tồn tại tại index: ' + index);
+        }
+      }
+    }
+
+    setInterval(showImage, 3000);
+  });
+  
               function openTab(evt, tabName) {
                 var tabElement = document.getElementById(tabName);
                 if (tabElement) {
@@ -1081,7 +1158,34 @@ document.addEventListener("DOMContentLoaded", function () {
               }
           
               
-          
+              function downloadImage(imageUrl) {
+    var link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'downloaded_image.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let images = document.querySelectorAll("#design .image-container img");
+    let index = 0;})
+
+    function showImage() {
+      if (images.length > 0) {
+        if (images[index]) {
+          images.forEach((img) => {
+            img.style.opacity = 0;
+          });
+
+          images[index].style.opacity = 1;
+
+          index = (index + 1) % images.length;
+        } else {
+          console.error('Phần tử không tồn tại tại index: ' + index);
+        }
+      }
+    }
               function redirectToGroup_Diary() {
                 window.location.href = "groupDiary.html";
               }

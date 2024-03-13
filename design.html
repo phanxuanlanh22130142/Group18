@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+        }
+    h3 {
+      color: #333;
+    }
+
+    .box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .image-container {
+      text-align: center;
+      margin: 15px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .download-button,
+    .figma-button {
+      display: block;
+      margin: 10px auto;
+      padding: 8px 15px;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-button {
+      background-color: #4CAF50;
+    }
+
+    .figma-button {
+      background-color: #1E88E5;
+    }
+
+    .download-all-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      color: #fff;
+      background-color: #333;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-all-button:hover {
+      background-color: #555;
+    }
+    .implementation-buttons button {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .design-download a:hover,
+        .implementation-buttons button:hover {
+            background-color: #297fb8;
+            cursor: pointer;
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="implementation-buttons">
+        <button onclick="openLink('home.html')">Home</button>
+        <button onclick="openLink('about.html')">About</button>
+        
+        <button onclick="openLink('technical.html')">Technical</button>
+        <button onclick="openLink('StyleGuide.html')">Style Guide</button>
+        <button onclick="openLink('groupDiary.html')">GroupDiary</button>
+      
+        <button onclick="openLink('project.html')">Project</button>
+        <button onclick="openLink('result.html')">Result</button>
+        <button onclick="openLink('index.html')">Trang chủ</button>
+
+    </div>
+</header>
+  <div id="design" class="tabcontent">
+    <h3>Design</h3>
+    
+        <div class="box">
+          
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_trangchu_Webgiaitri.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_trangchu_Webgiaitri.jpg')">Download</button>
+            
+          </div>
+
+
+          <div class="image-container">
+            <img src="image/tc_fm.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/tc_fm.jpg')">Download</button>
+            <a href="https://www.figma.com/file/E6ORFw3WntTxf0boXuEfkb/Trang-ch%E1%BB%A7-Web-Gi%E1%BA%A3i-tr%C3%AD?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+          </div>
+          
+         
+
+
+
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_GroupDiary.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_GroupDiary.jpg')">Download</button>
+            
+          </div>
+
+         
+
+          <div class="image-container">
+            <img src="image/gd_fm.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/gd_fm.jpg')">Download</button>
+            <a href="https://www.figma.com/file/Y4MCbTDok372HYIK3qrGuy/Group-Diary?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+          </div>
+          
+        
+
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_Project.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_Project.jpg')">Download</button>
+            
+          </div>
+
+
+        
+          <div class="image-container">
+            <img src="image/project_fm.png" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/project_fm.png')">Download</button>
+            <a href="https://www.figma.com/file/NxOsnh9mLy5DBRdA8siyvj/Project?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+          </div>
+
+
+          <div class="image-container">
+            <img src="image/22130142_Phan_Xuan_Lanh_Result.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/22130142_Phan_Xuan_Lanh_Result.jpg')">Download</button>
+            
+          </div>
+          
+          <div class="image-container">
+            <img src="image/result_fm.jpg" alt="anh1">
+            <button class="download-button" onclick="downloadImage('image/result_fm.jpg')">Download</button>
+            <a href="https://www.figma.com/file/lTOCRSm9deTBtR65qRWmB8/Result?type=design&mode=design&t=E3fgMSMigfBBVA3U-1" class="figma-button">Go to Figma</a>
+            
+          
+    </div>
+    <button class="download-all-button" onclick="downloadAllImages()">Tải tất cả ảnh</button>
+  </div>
+
+  <script>
+   
+    function downloadImage(imageSrc) {
+      var link = document.createElement('a');
+      link.href = imageSrc;
+      link.download = 'downloaded_image.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    
+    function downloadAllImages() {
+      var imageContainers = document.querySelectorAll('.image-container img');
+      imageContainers.forEach(function(image) {
+        var imageSrc = image.src;
+        downloadImage(imageSrc);
+      });
+    }
+    
+    function openLink(link) {
+            
+            window.open(link, '_blank');
+        }
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  </script>
+</body>
+</html>

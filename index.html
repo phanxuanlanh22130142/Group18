@@ -476,6 +476,7 @@
 
 .center-content {
   text-align: center;
+
 }
 .tab button {
     background-color:orangered;
@@ -813,7 +814,18 @@ input, select, textarea, button {
             margin: 4px 2px;
             cursor: pointer;
         }
-   
+        .center-content .box .image-container img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  animation: none; /* Disable any existing animation */
+}
+
+.center-content .box .image-container .download-button,
+.center-content .box .image-container .figma-button {
+  animation: none; /* Disable any existing animation */
+}
   </style>
 </head>
 <body>
@@ -858,7 +870,7 @@ input, select, textarea, button {
       <button onclick="window.location.href = 'result.html';">Result</button>
       <button onclick="window.location.href = 'StyleGuide.html';">StyleGuide</button>
       <button onclick="window.location.href = 'project.html';">Project</button>
-      <button onclick="openNestedTab(event, 'design')">Design</button>
+      <button onclick="window.location.href = 'design.html';">Design</button>
     </div>
   </div>
   <button onclick="guidedAction(this)" class="guided-action-button blinking">Guided Action</button>
@@ -1071,13 +1083,13 @@ input, select, textarea, button {
 });
 
 function showLoginForm() {
-    document.getElementById('loginForm').style.display = 'block'; // Hiển thị form đăng nhập khi nhấn nút
-    document.getElementById('registerForm').style.display = 'none'; // Ẩn form đăng ký nếu đang hiển thị
+    document.getElementById('loginForm').style.display = 'block'; 
+    document.getElementById('registerForm').style.display = 'none'; 
 }
 
 function showRegisterForm() {
-    document.getElementById('registerForm').style.display = 'block'; // Hiển thị form đăng ký khi nhấn nút
-    document.getElementById('loginForm').style.display = 'none'; // Ẩn form đăng nhập nếu đang hiển thị
+    document.getElementById('registerForm').style.display = 'block'; 
+    document.getElementById('loginForm').style.display = 'none'; 
 }
 
 function submitLoginForm() {

@@ -56,13 +56,43 @@
         button:hover {
             background-color: #297fb8;
         }
+        .implementation-buttons button {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .design-download a:hover,
+        .implementation-buttons button:hover {
+            background-color: #297fb8;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
     <header>
-        <h1>Kết Quả Đánh Giá</h1>
+        <div class="implementation-buttons">
+            <button onclick="openLink('home.html')">Home</button>
+            <button onclick="openLink('about.html')">About</button>
+            
+            <button onclick="openLink('technical.html')">Technical</button>
+            <button onclick="openLink('StyleGuide.html')">Style Guide</button>
+            <button onclick="openLink('groupDiary.html')">GroupDiary</button>
+          
+            <button onclick="openLink('index.html')">Project</button>
+            <button onclick="openLink('result.html')">Result</button>
+    
+        </div>
     </header>
 
     <main>
@@ -77,7 +107,11 @@
             <button onclick="window.location.href = 'project.html';">Project</button>
             <button onclick="window.location.href = 'result.html';">Result</button>
             
-            <button onclick="window.location.href = 'result2.html';"> Tới Result</button>
+            
+            <button onclick="window.location.href = 'about.html';">About(hỗ trợ tạo link)</button>
+            <button onclick="window.location.href = 'home.html';">Home(hỗ trợ tạo link)</button>
+            <button onclick="window.location.href = 'StyleGuide.html';">StyleGuide(hỗ trợ tạo link)</button>
+            <button onclick="window.location.href = 'technical.html';">Technical(hỗ trợ tạo link)</button>
         </div>
 
         <div class="column">
@@ -124,6 +158,15 @@
             
             alert('Xem kết quả của Thành Viên ' + memberNumber);
         }
+       
+    
+    function openLink(link) {
+        
+        window.open(link, '_blank');
+    }
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+
     </script>
 
 </body>

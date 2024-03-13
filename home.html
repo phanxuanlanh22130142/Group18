@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    <header>
+        <div class="implementation-buttons">
+            <button onclick="openLink('home.html')">Home</button>
+            <button onclick="openLink('about.html')">About</button>
+            
+            <button onclick="openLink('technical.html')">Technical</button>
+            <button onclick="openLink('StyleGuide.html')">Style Guide</button>
+            <button onclick="openLink('groupDiary.html')">GroupDiary</button>
+          
+            <button onclick="openLink('index.html')">Project</button>
+            <button onclick="openLink('result.html')">Result</button>
+    
+        </div>
+    </header>
     <div class="home">
 
         <h1>CHÚNG TÔI LÀ</h1>
@@ -15,5 +29,14 @@
 
     </div>
     <footer class="foot"> Giảng viên: Trần Thị Thanh Nga</footer>
+    <script>
+    
+        function openLink(link) {
+            
+            window.open(link, '_blank');
+        }
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  
+    </script>
 </body>
 </html>

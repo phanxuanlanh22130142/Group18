@@ -1225,6 +1225,7 @@ function guidedAction(button) {
             '<li>Nhấn "Đăng nhập" để trải nghiệm chức năng đăng nhập.</li>' +
             '<li>Nhấn "Đăng ký" để tạo một tài khoản mới.</li>' +
             '<li>Khám phá các danh mục như "Phim", "Truyện", "Nhạc", "Game" ở menu.</li>' +
+          '<li>Nếu có bất cứ vấn đề gì cần giao tiếp hãy liên hệ với chúng tôi bằng from liên hệ. </li>'+
             '</ul>',
         icon: 'info',
         confirmButtonText: 'OK'
@@ -1236,8 +1237,9 @@ function showContactForm() {
 }
 
 function submitForm(event) {
-    event.preventDefault();
-    alert("Form đã được gửi!");
+  event.preventDefault();
+  alert("Form đã được gửi!"); 
+  document.getElementById("contactForm").style.display = "none";
 }
             </script>
              

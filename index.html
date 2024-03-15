@@ -23,6 +23,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background-color:#888 ;
     }
 
     .login-register-container {
@@ -66,7 +67,7 @@
     .taskManager button {
       padding: 8px 12px;
       cursor: pointer;
-      color:brown;
+      color:yellow;
     }
 
     .tab {
@@ -830,59 +831,187 @@ input, select, textarea, button {
 
 .center-content .box .image-container .download-button,
 .center-content .box .image-container .figma-button {
-  animation: none; /* Disable any existing animation */
+  animation: none; 
+}
+
+.payment-container {
+  max-width: 400px;
+  margin: 0px;
+  padding: 20px;
+  border: 10px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+
+}
+
+.payment-form {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px; 
+  background-color:chartreuse ;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.payment-form input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.pay-button {
+  padding: 10px 20px;
+  background-color:cadetblue;
+  color:chartreuse;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pay-button:hover {
+  background-color: #0056b3;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modal.show {
+    display: block;
+}
+
+
+
+
+
+.shooting-star {
+  position: absolute;
+  width: 20px;
+  height: 7px;
+  background-color:gold; /* Màu vàng */
+  border-radius: 50%; /* Làm tròn viền */
+  animation: shootingStarAnimation linear infinite;
+}
+
+@keyframes shootingStarAnimation {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh) translateX(100vw);
+    opacity: 0;
+  }
+}
+.shooting-stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
 }
   </style>
 </head>
 <body>
   <div class="taskManager">
-    <div class="auth-buttons">
-      <button onclick="showLoginForm()">Đăng nhập</button>
-      <button onclick="showRegisterForm()">Đăng ký</button>
+    <div class="shooting-stars-container"></div>
+<div class="auth-buttons">
+  <button onclick="openModal('loginModal'); submitLoginForm()">Đăng nhập</button>
+  <button onclick="openModal('registerModal'); submitRegisterForm()">Đăng ký</button>
+</div>
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeModal('loginModal')">&times;</span>
+      <form id="loginForm" onsubmit="event.preventDefault(); submitLoginForm()">
+          <label for="username">Tên người dùng:</label><br>
+          <input type="text" id="username" name="username"><br>
+          <label for="password">Mật khẩu:</label><br>
+          <input type="password" id="password" name="password"><br><br>
+          <input type="submit" value="Đăng nhập">
+      </form>
+      <p id="loginMessage"></p>
   </div>
+</div>
 
-  
-  
-  <form id="loginForm" onsubmit="event.preventDefault(); submitLoginForm()">
-      <label for="username">Tên người dùng:</label><br>
-      <input type="text" id="username" name="username"><br>
-      <label for="password">Mật khẩu:</label><br>
-      <input type="password" id="password" name="password"><br><br>
-      <input type="submit" value="Đăng nhập">
-  </form>
-  <p id="loginMessage"></p> <!-- Placeholder for login message -->
-
-  
-  <form id="registerForm" onsubmit="event.preventDefault(); submitRegisterForm()">
-      <label for="fullname">Họ và tên:</label><br>
-      <input type="text" id="fullname" name="fullname"><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email"><br>
-      <label for="newusername">Tên người dùng mới:</label><br>
-      <input type="text" id="newusername" name="newusername"><br>
-      <label for="newpassword">Mật khẩu mới:</label><br>
-      <input type="password" id="newpassword" name="newpassword"><br><br>
-      <input type="submit" value="Đăng ký">
-  </form>
-  <p id="registerMessage"></p> 
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeModal('registerModal')">&times;</span>
+      <form id="registerForm" onsubmit="event.preventDefault(); submitRegisterForm()">
+          <label for="fullname">Họ và tên:</label><br>
+          <input type="text" id="fullname" name="fullname"><br>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email"><br>
+          <label for="newusername">Tên người dùng mới:</label><br>
+          <input type="text" id="newusername" name="newusername"><br>
+          <label for="newpassword">Mật khẩu mới:</label><br>
+          <input type="password" id="newpassword" name="newpassword"><br><br>
+          <input type="submit" value="Đăng ký">
+      </form>
+      <p id="registerMessage"></p>
   </div>
-
-    <div class="button-container" id="button-container"> 
-            <button onclick="window.location.href = 'index.html';">Trang chủ</button>
-      <button onclick="window.location.href = 'about.html';">About</button>
-     
-     
-      <button onclick="window.location.href = 'movie.html';">Movie</button>
-       <button onclick="window.location.href = 'technical.html';">Technical</button>
-     
-      <button onclick="window.location.href = 'StyleGuide.html';">StyleGuide</button>
-       <button onclick="window.location.href = 'groupDiary.html';">Group Diary</button>
-     
-    
-      <button onclick="window.location.href = 'design.html';">Design</button>
+</div>
+   
+  
+    <div class="payment-container">
+      <h2>Chọn phương thức thanh toán</h2>
+      <button id="showPaymentForm" class="pay-button" onclick="openPaymentModal()">Thanh toán</button>
+      <div id="paymentModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closePaymentModal()">&times;</span>
+          <h2>Thông tin thanh toán</h2>
+          <form>
+            <!-- Thêm các trường của form thanh toán ở đây -->
+            <input type="text" placeholder="Họ và tên"><br><br>
+            <input type="text" placeholder="Số thẻ tín dụng"><br><br>
+            <input type="text" placeholder="Ngày hết hạn"><br><br>
+            <input type="text" placeholder="Mã bảo mật"><br><br>
+            <button type="submit" class="pay-button">Xác nhận thanh toán</button>
+          </form>
+        </div>
+      </div>
     </div>
+  
+  
+ 
+    
   </div>
   <button onclick="guidedAction(this)" class="guided-action-button blinking">Guided Action</button>
+  <button onclick="openLink('about.html')">About</button>
  
   <div class="container">
     <div class="welcome-message">
@@ -1085,59 +1214,64 @@ input, select, textarea, button {
           </div>
           
             <script  >
-         document.addEventListener('DOMContentLoaded', function () {
-    // Ẩn cả hai form khi trang vừa tải lần đầu
-    document.getElementById('loginForm').style.display = 'none';
-    document.getElementById('registerForm').style.display = 'none';
-});
-
-function showLoginForm() {
-    document.getElementById('loginForm').style.display = 'block'; 
-    document.getElementById('registerForm').style.display = 'none'; 
-}
-
-function showRegisterForm() {
-    document.getElementById('registerForm').style.display = 'block'; 
-    document.getElementById('loginForm').style.display = 'none'; 
-}
-
-function submitLoginForm() {
-    let loginForm = document.getElementById('loginForm');
-    let loginMessage = document.getElementById('loginMessage');
-    let username = document.getElementById('username').value;
-    let password = document.getElementById('password').value;
-    if (username === 'user' && password === 'pass') {
-        loginMessage.innerText = 'Đăng nhập thành công!';
-        setTimeout(function(){
-            loginMessage.innerText = ''; // Xóa thông báo sau 2 giây
-            loginForm.style.display = 'none'; // Ẩn form đăng nhập sau khi đăng nhập thành công
-        }, 2000);
-    } else {
-        loginMessage.innerText = 'Đăng nhập thất bại. Vui lòng thử lại.';
-        setTimeout(function(){
-            loginMessage.innerText = ''; // Xóa thông báo sau 2 giây
-            loginForm.style.display = 'none'; // Ẩn form đăng nhập sau khi đăng nhập thất bại
-        }, 2000);
+              
+        function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = "block";
+        }
     }
-}
 
-function submitRegisterForm() {
-    let registerForm = document.getElementById('registerForm');
-    let registerMessage = document.getElementById('registerMessage');
-    let fullname = document.getElementById('fullname').value;
-    let email = document.getElementById('email').value;
-    let newusername = document.getElementById('newusername').value;
-    let newpassword = document.getElementById('newpassword').value;
-    if (fullname !== '' && email !== '' && newusername !== '' && newpassword !== '') {
-        registerMessage.innerText = 'Đăng ký thành công!';
-        setTimeout(function(){
-            registerMessage.innerText = ''; // Xóa thông báo sau 2 giây
-            registerForm.style.display = 'none'; // Ẩn form đăng ký sau khi đăng ký thành công
-        }, 2000);
-    } else {
-        registerMessage.innerText = 'Đăng ký thất bại. Vui lòng thử lại.';
+    // Đóng modal
+    function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = "none";
+        }
     }
-}
+
+    // Ẩn modal khi nhấn nút đóng
+    function closeModalOnClickOutside(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
+        }
+    }
+
+    // Thêm sự kiện cho việc ẩn modal khi nhấp vào bên ngoài
+    document.addEventListener('click', closeModalOnClickOutside);
+
+    // Xử lý form đăng nhập
+    function submitLoginForm() {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        if (username === 'user' && password === 'pass') {
+            document.getElementById('loginMessage').innerText = 'Đăng nhập thành công!';
+            setTimeout(function(){
+                closeModal('loginModal'); // Ẩn form đăng nhập sau khi đăng nhập thành công
+            }, 2000);
+        } else {
+            document.getElementById('loginMessage').innerText = 'Đăng nhập thất bại. Vui lòng thử lại.';
+            setTimeout(function(){
+                document.getElementById('loginMessage').innerText = ''; 
+            }, 2000);
+        }
+    }
+
+    
+    function submitRegisterForm() {
+        let fullname = document.getElementById('fullname').value;
+        let email = document.getElementById('email').value;
+        let newusername = document.getElementById('newusername').value;
+        let newpassword = document.getElementById('newpassword').value;
+        if (fullname !== '' && email !== '' && newusername !== '' && newpassword !== '') {
+            document.getElementById('registerMessage').innerText = 'Đăng ký thành công!';
+            setTimeout(function(){
+                closeModal('registerModal'); 
+            }, 2000);
+        } else {
+            document.getElementById('registerMessage').innerText = 'Đăng ký thất bại. Vui lòng thử lại.';
+        }
+    }
 document.addEventListener("DOMContentLoaded", function () {
     let images = document.querySelectorAll("#phim .box img");
     let index = 0;
@@ -1250,6 +1384,47 @@ function submitForm(event) {
   alert("Form đã được gửi!"); 
   document.getElementById("contactForm").style.display = "none";
 }
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("paymentForm").style.display = "block";
+});
+document.getElementById("showPaymentForm").addEventListener("click", function() {
+  document.getElementById("paymentForm").style.display = "block";
+});function openModal(modalId) {
+  document.getElementById(modalId).style.display = "block";
+}
+
+// Đóng yModal
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
+}
+function openPaymentModal() {
+    var paymentModal = document.getElementById('paymentModal');
+    if (paymentModal) {
+      paymentModal.style.display = "block";
+    }
+  }
+
+  function closePaymentModal() {
+    var paymentModal = document.getElementById('paymentModal');
+    if (paymentModal) {
+      paymentModal.style.display = "none";
+    }
+  }document.addEventListener('DOMContentLoaded', function () {
+        createShootingStars(30); // Số lượng sao băng
+    });
+
+    function createShootingStars(numStars) {
+        const container = document.querySelector('.shooting-stars-container');
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('shooting-star');
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 10}s`;
+            star.style.animationDuration = `${Math.random() * 5 + 3}s`;
+            container.appendChild(star);
+        }
+    }
             </script>
              
 </body>

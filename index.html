@@ -831,7 +831,7 @@ input, select, textarea, button {
 
 .center-content .box .image-container .download-button,
 .center-content .box .image-container .figma-button {
-  animation: none; 
+  animation: none; /* Disable any existing animation */
 }
 
 .payment-container {
@@ -849,7 +849,7 @@ input, select, textarea, button {
   position: absolute;
   top: 0;
   right: 0;
-  width: 250px; 
+  width: 250px; /* Điều chỉnh độ rộng theo nhu cầu */
   background-color:chartreuse ;
   padding: 20px;
   border: 1px solid #ccc;
@@ -876,21 +876,23 @@ input, select, textarea, button {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 30%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
+/* Thêm thuộc tính cho kích thước modal */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
+    width: auto; /* Tự động thay đổi chiều ngang với kích thước của form */
+    height: auto; /* Tự động thay đổi chiều cao với kích thước của form */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .close {
@@ -907,7 +909,7 @@ input, select, textarea, button {
     cursor: pointer;
 }
 
-
+/* Khi modal được mở, hiển thị nó */
 .modal.show {
     display: block;
 }
@@ -949,10 +951,10 @@ input, select, textarea, button {
 <body>
   <div class="taskManager">
     <div class="shooting-stars-container"></div>
-<div class="auth-buttons">
-  <button onclick="openModal('loginModal'); submitLoginForm()">Đăng nhập</button>
-  <button onclick="openModal('registerModal'); submitRegisterForm()">Đăng ký</button>
-</div>
+    <div class="auth-buttons">
+      <button onclick="openModal('loginModal')">Đăng nhập</button>
+      <button onclick="openModal('registerModal')">Đăng ký</button>
+    </div>
 
 <div id="loginModal" class="modal">
   <div class="modal-content">
@@ -1242,36 +1244,36 @@ input, select, textarea, button {
 
     // Xử lý form đăng nhập
     function submitLoginForm() {
-        let username = document.getElementById('username').value;
-        let password = document.getElementById('password').value;
-        if (username === 'user' && password === 'pass') {
-            document.getElementById('loginMessage').innerText = 'Đăng nhập thành công!';
-            setTimeout(function(){
-                closeModal('loginModal'); // Ẩn form đăng nhập sau khi đăng nhập thành công
-            }, 2000);
-        } else {
-            document.getElementById('loginMessage').innerText = 'Đăng nhập thất bại. Vui lòng thử lại.';
-            setTimeout(function(){
-                document.getElementById('loginMessage').innerText = ''; 
-            }, 2000);
-        }
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    if (username === 'user' && password === 'pass') {
+        document.getElementById('loginMessage').innerText = 'Đăng nhập thành công!'; // Hiển thị thông báo sau khi đăng nhập thành công
+        setTimeout(function(){
+            closeModal('loginModal'); // Ẩn modal đăng nhập sau khi đăng nhập thành công
+        }, 2000);
+    } else {
+        document.getElementById('loginMessage').innerText = 'Đăng nhập thất bại. Vui lòng thử lại.'; // Hiển thị thông báo sau khi đăng nhập thất bại
+        setTimeout(function(){
+            document.getElementById('loginMessage').innerText = ''; // Xóa thông báo sau 2 giây
+        }, 2000);
     }
+}
 
-    
-    function submitRegisterForm() {
-        let fullname = document.getElementById('fullname').value;
-        let email = document.getElementById('email').value;
-        let newusername = document.getElementById('newusername').value;
-        let newpassword = document.getElementById('newpassword').value;
-        if (fullname !== '' && email !== '' && newusername !== '' && newpassword !== '') {
-            document.getElementById('registerMessage').innerText = 'Đăng ký thành công!';
-            setTimeout(function(){
-                closeModal('registerModal'); 
-            }, 2000);
-        } else {
-            document.getElementById('registerMessage').innerText = 'Đăng ký thất bại. Vui lòng thử lại.';
-        }
+// Xử lý form đăng ký
+function submitRegisterForm() {
+    let fullname = document.getElementById('fullname').value;
+    let email = document.getElementById('email').value;
+    let newusername = document.getElementById('newusername').value;
+    let newpassword = document.getElementById('newpassword').value;
+    if (fullname !== '' && email !== '' && newusername !== '' && newpassword !== '') {
+        document.getElementById('registerMessage').innerText = 'Đăng ký thành công!'; // Hiển thị thông báo sau khi đăng ký thành công
+        setTimeout(function(){
+            closeModal('registerModal'); // Ẩn modal đăng ký sau khi đăng ký thành công
+        }, 2000);
+    } else {
+        document.getElementById('registerMessage').innerText = 'Đăng ký thất bại. Vui lòng thử lại.'; // Hiển thị thông báo sau khi đăng ký thất bại
     }
+}
 document.addEventListener("DOMContentLoaded", function () {
     let images = document.querySelectorAll("#phim .box img");
     let index = 0;
@@ -1424,10 +1426,7 @@ function openPaymentModal() {
             star.style.animationDuration = `${Math.random() * 5 + 3}s`;
             container.appendChild(star);
         }
-    }function openLink(link) {
-            
-            window.open(link, '_blank');
-        }
+    }
             </script>
              
 </body>

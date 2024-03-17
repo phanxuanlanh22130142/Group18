@@ -946,6 +946,32 @@ input, select, textarea, button {
   pointer-events: none;
   z-index: 9999;
 }
+.dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -987,7 +1013,15 @@ input, select, textarea, button {
       <p id="registerMessage"></p>
   </div>
 </div>
-   
+<div class="dropdown">
+  <button class="dropbtn">Bảng xếp hạng</button>
+  <div class="dropdown-content">
+    <button onclick="window.location.href='https://momo.vn/cinema/top-phim?fromType=nav_menu'">Bảng xếp hạng phim</button>
+    <button onclick="window.location.href='https://tienhiep.info/category/bang-xep-hang'">Bảng xếp hạng truyện</button>
+    <button onclick="window.location.href='https://www.nhaccuatui.com/bai-hat/top-20.nhac-viet.html'">Bảng xếp hạng nhạc</button>
+    <button onclick="window.location.href='https://hoanghapc.vn/tro-choi-hay-nhat-the-gioi'">Bảng xếp hạng game</button>
+  </div>
+</div>
   
     <div class="payment-container">
       <h2>Chọn phương thức thanh toán</h2>

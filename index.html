@@ -826,7 +826,7 @@ input, select, textarea, button {
   height: auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  animation: none; /* Disable any existing animation */
+  animation: none; 
 }
 
 .center-content .box .image-container .download-button,
@@ -849,7 +849,7 @@ input, select, textarea, button {
   position: absolute;
   top: 0;
   right: 0;
-  width: 250px; /* Điều chỉnh độ rộng theo nhu cầu */
+  width: 250px;
   background-color:chartreuse ;
   padding: 20px;
   border: 1px solid #ccc;
@@ -882,7 +882,7 @@ input, select, textarea, button {
     z-index: 1000;
 }
 
-/* Thêm thuộc tính cho kích thước modal */
+
 .modal-content {
     width: auto; /* Tự động thay đổi chiều ngang với kích thước của form */
     height: auto; /* Tự động thay đổi chiều cao với kích thước của form */
@@ -909,7 +909,7 @@ input, select, textarea, button {
     cursor: pointer;
 }
 
-/* Khi modal được mở, hiển thị nó */
+
 .modal.show {
     display: block;
 }
@@ -1288,7 +1288,7 @@ input, select, textarea, button {
         }
     }
 
-    // Đóng modal
+   
     function closeModal(modalId) {
         var modal = document.getElementById(modalId);
         if (modal) {
@@ -1296,46 +1296,46 @@ input, select, textarea, button {
         }
     }
 
-    // Ẩn modal khi nhấn nút đóng
+    
     function closeModalOnClickOutside(event) {
         if (event.target.classList.contains('modal')) {
             event.target.style.display = "none";
         }
     }
 
-    // Thêm sự kiện cho việc ẩn modal khi nhấp vào bên ngoài
+    
     document.addEventListener('click', closeModalOnClickOutside);
 
-    // Xử lý form đăng nhập
+    
     function submitLoginForm() {
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     if (username === 'user' && password === 'pass') {
-        document.getElementById('loginMessage').innerText = 'Đăng nhập thành công!'; // Hiển thị thông báo sau khi đăng nhập thành công
+        document.getElementById('loginMessage').innerText = 'Đăng nhập thành công!'; 
         setTimeout(function(){
             closeModal('loginModal'); // Ẩn modal đăng nhập sau khi đăng nhập thành công
         }, 2000);
     } else {
-        document.getElementById('loginMessage').innerText = 'Đăng nhập thất bại. Vui lòng thử lại.'; // Hiển thị thông báo sau khi đăng nhập thất bại
+        document.getElementById('loginMessage').innerText = 'Đăng nhập thất bại. Vui lòng thử lại.'; 
         setTimeout(function(){
-            document.getElementById('loginMessage').innerText = ''; // Xóa thông báo sau 2 giây
+            document.getElementById('loginMessage').innerText = '';
         }, 2000);
     }
 }
 
-// Xử lý form đăng ký
+
 function submitRegisterForm() {
     let fullname = document.getElementById('fullname').value;
     let email = document.getElementById('email').value;
     let newusername = document.getElementById('newusername').value;
     let newpassword = document.getElementById('newpassword').value;
     if (fullname !== '' && email !== '' && newusername !== '' && newpassword !== '') {
-        document.getElementById('registerMessage').innerText = 'Đăng ký thành công!'; // Hiển thị thông báo sau khi đăng ký thành công
+        document.getElementById('registerMessage').innerText = 'Đăng ký thành công!'; 
         setTimeout(function(){
-            closeModal('registerModal'); // Ẩn modal đăng ký sau khi đăng ký thành công
+            closeModal('registerModal'); 
         }, 2000);
     } else {
-        document.getElementById('registerMessage').innerText = 'Đăng ký thất bại. Vui lòng thử lại.'; // Hiển thị thông báo sau khi đăng ký thất bại
+        document.getElementById('registerMessage').innerText = 'Đăng ký thất bại. Vui lòng thử lại.';
     }
 }
 document.addEventListener("DOMContentLoaded", function () {
@@ -1459,7 +1459,7 @@ document.getElementById("showPaymentForm").addEventListener("click", function() 
   document.getElementById(modalId).style.display = "block";
 }
 
-// Đóng yModal
+
 function closeModal(modalId) {
   document.getElementById(modalId).style.display = "none";
 }
@@ -1491,6 +1491,9 @@ function openPaymentModal() {
             container.appendChild(star);
         }
     }
+              function openLink(url) {
+  window.location.href = url;
+}
             </script>
              
 </body>
